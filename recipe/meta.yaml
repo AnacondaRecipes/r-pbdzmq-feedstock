@@ -13,11 +13,8 @@ source:
     - https://cran.r-project.org/src/contrib/pbdZMQ_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/pbdZMQ/pbdZMQ_{{ version }}.tar.gz
   sha256: e73f882ba2f882ef6ef2280cd19fc4e2010701cff1ae3ebab2ebb29c16f63fbb
-
-
-  # patches:
-   # List any patch files here
-   # - fix.patch
+  patches:
+    - 0001-Check-if-using-internal-ZMQ-before-messing-with-RPAT.patch
 
 build:
   merge_build_host: True  # [win]
