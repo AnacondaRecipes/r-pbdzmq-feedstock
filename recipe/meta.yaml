@@ -1,4 +1,4 @@
-{% set version = '0.3-0' %}
+{% set version = '0.3-2' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,23 +10,22 @@ package:
 source:
   fn: pbdZMQ_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/pbdZMQ_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/pbdZMQ/pbdZMQ_{{ version }}.tar.gz
-  sha256: e73f882ba2f882ef6ef2280cd19fc4e2010701cff1ae3ebab2ebb29c16f63fbb
+    - {{ cran_mirror }}/src/contrib/pbdZMQ_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/pbdZMQ/pbdZMQ_{{ version }}.tar.gz
+  sha256: ece2a2881c662f77126e4801ba4e01c991331842b0d636ce5a2b591b9de3fc37
+
   patches:
     - 0001-Check-if-using-internal-ZMQ-before-messing-with-RPAT.patch
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
-  number: 1
-
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
-
 
 requirements:
   build:
@@ -85,16 +84,16 @@ extra:
 # The original CRAN metadata for this package was:
 
 # Package: pbdZMQ
-# Version: 0.3-0
-# Date: 2017-12-30
-# Title: Programming with Big Data -- Interface to ZeroMQ
+# Version: 0.3-2
+# Date: 2018-01-11
+# Title: Programming with Big Data -- Interface to 'ZeroMQ'
 # Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email = "wccsnow@gmail.com"), person("Drew", "Schmidt", role = "aut"), person("Christian", "Heckendorf", role = "aut", comment = "file transfer"), person("George", "Ostrouchov", role = "aut", comment = "Mac OSX"), person("Whit", "Armstrong", role = "ctb", comment = "some functions are modified from the rzmq package for backwards compatibility"), person("Brian", "Ripley", role = "ctb", comment = "C code of shellexec, and Solaris"), person("R Core team", role = "ctb", comment = "some functions are modified from the R source code"), person("Philipp", "A.", role = "ctb", comment = "Fedora"), person("Elliott Sales", "de Andrade", role = "ctb", comment = "sprintf"), person("Spencer", "Aiello", role = "ctb", comment = "windows conf") )
 # Depends: R (>= 3.2.0)
 # LazyLoad: yes
 # LazyData: yes
-# Copyright: See files AUTHORS, COPYING, COPYING.LESSER, and MAINTAINERS in pbdZMQ/inst/zmq_copyright/ for the ZeroMQ source files in src/zmq_src/ which are under GPL-3.
+# Copyright: See files AUTHORS, COPYING, COPYING.LESSER, and MAINTAINERS in 'pbdZMQ/inst/zmq_copyright/' for the 'ZeroMQ' source files in 'src/zmq_src/' which are under GPL-3.
 # Description: 'ZeroMQ' is a well-known library for high-performance asynchronous messaging in scalable, distributed applications.  This package provides high level R wrapper functions to easily utilize 'ZeroMQ'. We mainly focus on interactive client/server programming frameworks. For convenience, a minimal 'ZeroMQ' library (4.2.2) is shipped with 'pbdZMQ', which can be used if no system installation of 'ZeroMQ' is available.  A few wrapper functions compatible with 'rzmq' are also provided.
-# SystemRequirements: Linux, Mac OSX, and Windows, or ZeroMQ library >= 4.0.4. Solaris 10 needs ZeroMQ library 4.0.7 and OpenCSW.
+# SystemRequirements: Linux, Mac OSX, and Windows, or 'ZeroMQ' library >= 4.0.4. Solaris 10 needs 'ZeroMQ' library 4.0.7 and 'OpenCSW'.
 # License: GPL-3
 # URL: http://r-pbd.org/
 # BugReports: http://group.r-pbd.org/
@@ -102,10 +101,10 @@ extra:
 # NeedsCompilation: yes
 # Maintainer: Wei-Chen Chen <wccsnow@gmail.com>
 # RoxygenNote: 6.0.1
-# Packaged: 2018-01-04 00:16:48 UTC; snoweye
+# Packaged: 2018-01-31 01:22:48 UTC; snoweye
 # Author: Wei-Chen Chen [aut, cre], Drew Schmidt [aut], Christian Heckendorf [aut] (file transfer), George Ostrouchov [aut] (Mac OSX), Whit Armstrong [ctb] (some functions are modified from the rzmq package for backwards compatibility), Brian Ripley [ctb] (C code of shellexec, and Solaris), R Core team [ctb] (some functions are modified from the R source code), Philipp A. [ctb] (Fedora), Elliott Sales de Andrade [ctb] (sprintf), Spencer Aiello [ctb] (windows conf)
 # Repository: CRAN
-# Date/Publication: 2018-01-04 18:02:20 UTC
+# Date/Publication: 2018-01-31 12:41:34 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
