@@ -12,7 +12,8 @@ export DISABLE_AUTOBREW=1
 # R refuses to build packages that mark themselves as Priority: Recommended
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
-$R CMD INSTALL --build .
+$R CMD INSTALL --build . --configure-args="ZMQ_INCLUDE='-I${PREFIX}/include' \
+                                           ZMQ_LDFLAGS='-L${PREFIX}/lib -lzmq'"
 
 # Add more build steps here, if they are necessary.
 
